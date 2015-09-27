@@ -1,0 +1,22 @@
+{
+  "name": "Quizz",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-route": "~1.4.6",
+    "angular-sanitize": "~1.4.6",
+    "angular-mocks": "~1.4.6",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "bootstrap": "3.3.5"
+  },
+  "analytics": false,
+  "resolutions": {
+    "angular": "~1.4.6",
+    "angular-route": "~1.4.6",
+    "angular-sanitize": "~1.4.6",
+    "angular-mocks": "~1.4.6",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3"
+  }
+}
