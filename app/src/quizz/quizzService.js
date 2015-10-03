@@ -3,7 +3,9 @@
 
   angular
     .module('app.quizz')
-    .service('quizzService', ['$q', QuizzService]);
+    .service('quizzService', QuizzService);
+
+  QuizzService.$inject = ['$q'];
 
   function QuizzService($q) {
     var users = [

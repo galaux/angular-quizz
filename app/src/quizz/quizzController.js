@@ -3,9 +3,11 @@
 
   angular
     .module('app.quizz')
-    .controller('quizzController', ['quizzService', QuizzController]);
+    .controller('quizzController', QuizzController);
 
-  function QuizzController(quizzService, $q) {
+  QuizzController.$inject = ['$q', 'quizzService'];
+
+  function QuizzController($q, quizzService) {
     var self = this;
 
     self.theother = null;
