@@ -13,20 +13,31 @@
   <body ng-app="app" ng-controller="quizzController as qc"
 
     <div class="panel panel-default">
-      <input type="TEXT" ng-model="aword" placeholder="Tell me sthing">
       <div class="panel-body">
-        Hello world, {{aword}}<br />
-        Say what {{qc.theother}}
+        {{qc.question}}
       </div>
+      <div class="panel-body" ng-show="showAnswer">
+        {{qc.answer}}
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="button" ng-show="!showAnswer" ng-click="showAnswer=!showAnswer">
+        Show answer
+      </button>
+      <button type="button" class="btn btn-primary" data-toggle="button" ng-show="showAnswer" ng-click="showAnswer=!showAnswer">
+        Hide answer
+      </button>
+
+      <button type="button" class="btn btn-secondary" ng-click="qc.nextQuestion()">
+        Next
+      </button>
     </div>
 
     <!-- AngularJS stuff -->
     <script src="./bower_components/angular/angular.js"></script>
 
-  <script src="./src/app.js"></script>
-  <script src="./src/quizz/quizz.js"></script>
-  <script src="./src/quizz/quizzController.js"></script>
-  <script src="./src/quizz/quizzService.js"></script>
+    <script src="./src/app.js"></script>
+    <script src="./src/quizz/quizz.js"></script>
+    <script src="./src/quizz/quizzController.js"></script>
+    <script src="./src/quizz/quizzService.js"></script>
 
   </body>
 

@@ -10,13 +10,36 @@
   function QuizzController($q, quizzService) {
     var self = this;
 
-    self.theother = null;
+    self.question = null;
+    self.answer = null;
 
-    quizzService
-      .loadAllUsers()
-      .then(function(users) {
-        self.theother = users[0].name;
-      });
+    self.questions = null;
+
+    activate();
+
+    function activate() {
+      return loadQuestions()
+        .then(function(data) {
+          return nextQuestion();
+        })
+    }
+
+    function loadQuestions() {
+      return quizzService
+        .loadAllQuestions()
+        .then(function(data) {
+          self.questions = data;
+          return self.questions;
+        });
+    }
+
+    self.nextQuestion = nextQuestion;
+    function nextQuestion() {
+      var i = Math.floor((Math.random() * self.questions.length));
+      self.question = self.questions[i].question;
+      self.answer = self.questions[i].answer;
+    }
+
   }
 
 })();
