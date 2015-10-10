@@ -19,7 +19,7 @@
 
     function activate() {
       return loadQuestions()
-        .then(function(data) {
+        .then(function() {
           return nextQuestion();
         })
     }
@@ -28,7 +28,7 @@
       return quizzService
         .loadAllQuestions()
         .then(function(data) {
-          self.questions = data;
+          self.questions = data.data;
           return self.questions;
         });
     }

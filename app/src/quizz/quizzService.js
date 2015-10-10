@@ -3,49 +3,23 @@
 
   angular
     .module('app.quizz')
-    .service('quizzService', QuizzService);
+    .factory('quizzService', quizzService);
 
-  QuizzService.$inject = ['$q'];
+  function quizzService($http, $q) {
 
-  function QuizzService($q) {
-    var questions = [
-      {
-        question: 'Cite all HTTP method you know.',
-        answer: 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE'
-      },
-      {
-        question: 'What is the difference between POST and PUT?',
-        answer: "The target resource in a POST request is intended to handle the enclosed representation according to the resource's own semantics, whereas the enclosed representation in a PUT request is defined as replacing the state of the target resource"
-      },
-      {
-        question: "What is a safe HTTP method?",
-        answer: "Request methods are considered safe if their defined semantics are essentially read-only; i.e., the client does not request, and does not expect, any state change on the origin server as a result of applying a safe method to a target resource. Likewise, reasonable use of a safe method is not expected to cause any harm, loss of property, or unusual burden on the origin server."
-      },
-      {
-        question: "Which HTTP methods are safe?",
-        answer: "GET, HEAD, OPTIONS, and TRACE"
-      },
-      {
-        question: "What does HTTP idempotent method mean?",
-        answer: "A request method is considered idempotent if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request."
-      },
-      {
-        question: "Which HTTP methods are idempotents?",
-        answer: "PUT, DELETE, and safe request methods"
-      },
-      {
-        question: "What is the difference in how GET and POST can be treated by a web proxy?",
-        answer: "GET (and HEAD) can be cached by proxies. POST (and others) cannot."
-      }
-    ];
-
-    // Promise-based API
-    return {
-      loadAllQuestions : function() {
-        // Simulate async nature of real remote calls
-        return $q.when(questions);
-      }
+    var service = {
+      loadAllQuestions: loadAllQuestions
     };
+
+    return service;
+
+    function loadAllQuestions() {
+      return $http.get('/app/data/questions.json')
+        .success(function(data) {
+          return data;
+        });
+    }
+
   }
 
 })();
