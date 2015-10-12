@@ -12,23 +12,51 @@
 
   <body ng-app="app" ng-controller="quizzController as qc">
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        {{qc.question}}
-      </div>
-      <div class="panel-body" ng-show="showAnswer">
-        {{qc.answer}}
-      </div>
-      <button type="button" class="btn btn-primary" data-toggle="button" ng-show="!showAnswer" ng-click="showAnswer=!showAnswer">
-        Show answer
-      </button>
-      <button type="button" class="btn btn-primary" data-toggle="button" ng-show="showAnswer" ng-click="showAnswer=!showAnswer">
-        Hide answer
-      </button>
+    <div class="container-fluid">
 
-      <button type="button" class="btn btn-secondary" ng-click="qc.nextQuestion()">
-        Next
-      </button>
+      <div class="row">
+
+        <div id="left-col" class="col-xs-3"/>
+        </div> <!-- left-col -->
+
+        <div id="right-col" class="col-xs-9">
+
+          <div id="main-content">
+            <div class="panel-body">
+              <h3>Question:</h3>
+              {{qc.question}}
+            </div>
+            <div class="panel-body" ng-show="showAnswer">
+              <h3>Answer:</h3>
+              {{qc.answer}}
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="button" ng-show="!showAnswer" ng-click="showAnswer=!showAnswer">
+              Show answer
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="button" ng-show="showAnswer" ng-click="showAnswer=!showAnswer">
+              Hide answer
+            </button>
+
+            <button type="button" class="btn btn-secondary" ng-click="qc.nextQuestion()">
+              Next
+            </button>
+          </div>
+
+          <div class="footer">
+              <span>
+                About
+              </span>
+              <span>
+                GitHub
+              </span>
+              <span>
+                <a href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
+              </span>
+          </div>
+        </div> <!-- right-col -->
+
+      </div>
+
     </div>
 
     <!-- AngularJS stuff -->
